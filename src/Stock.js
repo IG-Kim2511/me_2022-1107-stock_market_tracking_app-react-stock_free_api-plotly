@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import Plot from 'react-plotly.js';
 
 const Stock = () => {
+  // date
   let [stockChart_X_value, setStockChart_X_value] = useState([]);
+  //   price
   let [stockChart_Y_value, setStockChart_Y_value] = useState([]);
 
   let stockChart_X_value_function =[];
@@ -18,39 +21,58 @@ const Stock = () => {
   console.log(API_Call)
 
 
-  useEffect(() => {
-    const fetchItems = async () => {
-        const result = await axios(API_Call);
-  
-        console.log(result.data);
- 
-        for (let key in result.data['Time Series (Daily)']) {
-            stockChart_X_value_function.push(key);
-            stockChart_Y_value_function.push(result.data['Time Series (Daily)'][key]['4. close']);
-        }
-        console.log(stockChart_X_value_function)
-        console.log(stockChart_Y_value_function)
-        setStockChart_X_value( stockChart_X_value_function);
-        setStockChart_Y_value( stockChart_Y_value_function);
-        
-    };        
-    fetchItems();
-}, [])
+    useEffect(() => {
+        const fetchItems = async () => {
+            const result = await axios(API_Call);
+    
+            console.log(result.data);
+    
+            for (let key in result.data['Time Series (Daily)']) {
+                stockChart_X_value_function.push(key);
+                stockChart_Y_value_function.push(result.data['Time Series (Daily)'][key]['4. close']);
+            }
+            console.log(stockChart_X_value_function)
+            console.log(stockChart_Y_value_function)
+            setStockChart_X_value( stockChart_X_value_function);
+            setStockChart_Y_value( stockChart_Y_value_function);
+            
+        };        
+        fetchItems();
+    }, [])
 
 
     console.log(stockChart_X_value)
     console.log(stockChart_Y_value)
 
+
+    
   
   return (
     <div>
       <h1>Stock market</h1>
-      {/* <div>{stockChart_X_value}</div> */}
-      {/* <div>{stockChart_Y_value}</div> */}
 
-      {stockChart_X_value}
-      {stockChart_Y_value}
-   
+      date array :     
+      <br />
+        {stockChart_X_value}
+      <br />
+      <br />
+      price array :       {stockChart_Y_value}
+       
+      <h2>latest Date : {stockChart_X_value[0]}</h2>
+      <h2>latest price : {stockChart_Y_value[0]} $ </h2>
+      <Plot
+      data={[
+        {
+          x: stockChart_X_value,
+          y: stockChart_Y_value,
+          type: 'scatter',
+          mode: 'lines+markers',
+          marker: {color: 'red'},
+        },        
+      ]}
+      layout={ {width: 1200, height: 640, title: 'SPY(plotly)'} }
+    />
+
     </div>
   );
 };
