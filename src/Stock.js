@@ -8,6 +8,8 @@ const Stock = () => {
   let stockChart_X_value_function =[];
   let stockChart_Y_value_function =[];
 
+
+
   // 🍀env 파일은 node와 연결할때만 사용가능함 (react 단독으로 불가능)
   const API_KEY = "HGJWFG4N8AQ66ICD";
   let StockSymbol = "SPY";
@@ -46,9 +48,9 @@ const Stock = () => {
       {/* <div>{stockChart_X_value}</div> */}
       {/* <div>{stockChart_Y_value}</div> */}
 
-
-
-
+      {stockChart_X_value}
+      {stockChart_Y_value}
+   
     </div>
   );
 };
