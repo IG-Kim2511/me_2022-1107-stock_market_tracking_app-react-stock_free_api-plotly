@@ -70,7 +70,7 @@ const Stock = () => {
             marker: {color: 'red'},
             },        
         ]}
-        layout={ {width: 1200, height: 640, title: 'SPY(plotly)'} }
+        layout={ {width: 900, height: 640, title: 'SPY(plotly)'} }
         
     />
 
