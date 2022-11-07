@@ -61,18 +61,21 @@ const Stock = () => {
       <h2>latest Date : {stockChart_X_value[0]}</h2>
       <h2>latest price : {stockChart_Y_value[0]} $ </h2>
       <Plot
-      data={[
-        {
-          x: stockChart_X_value,
-          y: stockChart_Y_value,
-          type: 'scatter',
-          mode: 'lines+markers',
-          marker: {color: 'red'},
-        },        
-      ]}
-      layout={ {width: 1200, height: 640, title: 'SPY(plotly)'} }
+        data={[
+            {
+            x: stockChart_X_value,
+            y: stockChart_Y_value,
+            type: 'scatter',
+            mode: 'lines+markers',
+            marker: {color: 'red'},
+            },        
+        ]}
+        layout={ {width: 1200, height: 640, title: 'SPY(plotly)'} }
+        
     />
 
+
+    
     </div>
   );
 };
