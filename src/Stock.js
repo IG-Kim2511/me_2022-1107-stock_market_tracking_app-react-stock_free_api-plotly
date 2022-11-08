@@ -14,9 +14,9 @@ const Stock = () => {
 
 
   // 🍀env 파일은 node와 연결할때만 사용가능함 (react 단독으로 불가능)
-  const API_KEY = "HGJWFG4N8AQ66ICD";
+  const FREE_API_KEY = "HGJWFG4N8AQ66ICD";
   let StockSymbol = "SPY";
-  let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${API_KEY}`;
+  let API_Call = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${StockSymbol}&outputsize=compact&apikey=${FREE_API_KEY}`;
 
   console.log(API_Call)
 
